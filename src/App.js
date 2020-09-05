@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles.css";
 
-function App() {
+const username = "instagram";
+
+const Post = (props) => (
+  <React.Fragment>
+    <img src="https://via.placeholder.com/300" alt="postings"/>
+  </React.Fragment>
+);
+
+const Profile = (props) => {
+  const [isFollowed, setIsFollowed] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <img src="https://via.placeholder.com/150" alt="profile picture" />
+      <div>@{props.username}</div>
+      <button onClick={() => setIsFollowed(!isFollowed)}>
+        {isFollowed ? "Unfollow" : "Follow"}
+      </button>
+      <div>Posts</div>
+      <div>Follower</div>
+      <div>Following</div>
+      <div>Bio</div>
+      <Post />
+    </React.Fragment>
   );
 }
 
-export default App;
+
+export default function App() {
+  const username = "martin";
+
+  return <Profile username={username}/>;
+}
